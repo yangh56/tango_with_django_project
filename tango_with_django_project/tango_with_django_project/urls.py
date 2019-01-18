@@ -20,7 +20,6 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from rango import views
 
-
 app_name = 'rango'
 urlpatterns = [
     url(r'^$',views.index,name='index'),
