@@ -104,12 +104,12 @@ class Chapter4ViewTests(TestCase):
     def test_index_contains_hello_message(self):
         # Check if there is the message 'hello world!'
         response = self.client.get(reverse('index'))
-        self.assertIn(str.encode('Rango says'), response.content)
+        self.assertIn(b'Rango says', response.content)
 
     def test_does_index_contain_img(self):
         # Check if the index page contains an img
         response = self.client.get(reverse('index'))
-        self.assertIn(str.encode('img'), response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_using_template(self):
         # Check the template used to render index page
@@ -121,12 +121,12 @@ class Chapter4ViewTests(TestCase):
     def test_does_about_contain_img(self):
         # Check if in the about page contains an image
         response = self.client.get(reverse('about'))
-        self.assertIn(str.encode('img'), response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_contains_create_message(self):
         # Check if in the about page contains the message from the exercise
         response = self.client.get(reverse('about'))
-        self.assertIn(str.encode('This tutorial has been put together by'), response.content)
+        self.assertIn(b'This tutorial has been put together by', response.content)
 
 
 class Chapter5ViewTests(TestCase):
@@ -169,8 +169,8 @@ class Chapter5ViewTests(TestCase):
         response = self.client.get(reverse('index'))
 
         #Check title used correctly
-        self.assertIn(str.encode('<title>'), response.content)
-        self.assertIn(str.encode('</title>'), response.content)
+        self.assertIn(b'<title>', response.content)
+        self.assertIn(b'</title>', response.content)
 
     # Need to add tests to:
     # check admin interface - is it configured and set up
