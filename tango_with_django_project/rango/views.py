@@ -21,7 +21,7 @@ def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
     if form.is_valid():
-        form.save()
+        form.save(commit=True)
         return index(request)
     else:
         print(form.errors)
@@ -39,6 +39,7 @@ def add_page(request, category_name_slug):
         form = PageForm(request.POST)
         if form.is_valid():
             if category:
+                page = form.save(commit=False)
                 page.category = category
                 page.views = 0
                 page.save()
